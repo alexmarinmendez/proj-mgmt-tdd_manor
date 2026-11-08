@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProjectTest {
 
@@ -27,5 +26,34 @@ public class ProjectTest {
         assertEquals(0, new BigDecimal("150000.00").compareTo(project.getBudget()));
         assertEquals(ProjectStatus.PROPOSED, project.getStatus());
     }
+
+    @Test
+    void shouldRejectProjectWithoutCode() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Project(
+                    null,
+                    "Sistema de ventas",
+                    "Cliente ABC",
+                    IndustrySector.RETAIL,
+                    new BigDecimal("150000.00"),
+                    ProjectStatus.PROPOSED
+            );
+        });
+    }
+
+    @Test
+    void shouldRejectProjectWithBlankCode() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Project(
+                    "",
+                    "Sistema de ventas",
+                    "Cliente ABC",
+                    IndustrySector.RETAIL,
+                    new BigDecimal("150000.00"),
+                    ProjectStatus.PROPOSED
+            );
+        });
+    }
+
 
 }
