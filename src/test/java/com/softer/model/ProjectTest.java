@@ -1,5 +1,6 @@
 package com.softer.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ProjectTest {
 
     @Test
+    @DisplayName("Debe crear un proyecto cuando todos los datos son válidos")
     void shouldCreateProjectWithValidData() {
         Project project = new Project(
                 "PRJ-001",
@@ -28,6 +30,7 @@ public class ProjectTest {
     }
 
     @Test
+    @DisplayName("Debe rechazar un proyecto sin código")
     void shouldRejectProjectWithoutCode() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
@@ -42,6 +45,7 @@ public class ProjectTest {
     }
 
     @Test
+    @DisplayName("Debe rechazar un proyecto con código vacío")
     void shouldRejectProjectWithBlankCode() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
@@ -56,6 +60,7 @@ public class ProjectTest {
     }
 
     @Test
+    @DisplayName("Debe rechazar un proyecto sin nombre")
     void shouldRejectProjectWithoutName() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
@@ -70,6 +75,7 @@ public class ProjectTest {
     }
 
     @Test
+    @DisplayName("Debe rechazar un proyecto con nombre vacío")
     void shouldRejectProjectWithBlankName() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
