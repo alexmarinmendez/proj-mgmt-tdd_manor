@@ -94,5 +94,37 @@ public class ProjectTest {
         });
     }
 
+    @Test
+    @Order(6)
+    @DisplayName("Debe rechazar un proyecto con presupuesto menor a cero")
+    void shouldRejectProjectWithNegativeBudget() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Project(
+                    "PRJ-001",
+                    "Sistema de ventas",
+                    "Cliente ABC",
+                    IndustrySector.RETAIL,
+                    new BigDecimal("-150000.00"),
+                    ProjectStatus.PROPOSED
+            );
+        });
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("Debe rechazar un proyecto con presupuesto igual a cero")
+    void shouldRejectProjectWithZeroBudget() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Project(
+                    "PRJ-001",
+                    "Sistema de ventas",
+                    "Cliente ABC",
+                    IndustrySector.RETAIL,
+                    BigDecimal.ZERO, //new BigDecimal("0.00")
+                    ProjectStatus.PROPOSED
+            );
+        });
+    }
+
 
 }

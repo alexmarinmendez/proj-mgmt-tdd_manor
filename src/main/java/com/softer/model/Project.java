@@ -22,6 +22,9 @@ public class Project {
         this.name = name;
         this.clientName = clientName;
         this.sector = sector;
+        if (budget.compareTo(BigDecimal.ZERO) <= 0) {
+            throw  new IllegalArgumentException("El presupuesto asignado es un valor no válido");
+        }
         this.budget = budget;
         this.status = status;
     }
