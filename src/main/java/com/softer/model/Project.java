@@ -26,7 +26,10 @@ public class Project {
             throw  new IllegalArgumentException("El presupuesto asignado es un valor no válido");
         }
         this.budget = budget;
-        this.status = status;
+//        if (status == null ) {
+//            status = ProjectStatus.PROPOSED;
+//        }
+        this.status = (status == null) ? ProjectStatus.PROPOSED : status;
     }
 
     public String getCode() {

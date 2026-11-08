@@ -126,5 +126,20 @@ public class ProjectTest {
         });
     }
 
+    @Test
+    @Order(8)
+    @DisplayName("Debe asignar PROPOSED cuando el estado del proyecto es null")
+    void shouldAssignProposedStatusWhenStatusIsNull() {
+        Project project = new Project(
+                "PRJ-001",
+                "Sistema de ventas",
+                "Cliente ABC",
+                IndustrySector.RETAIL,
+                new BigDecimal("150000.00"),
+                null
+        );
+
+        assertEquals(ProjectStatus.PROPOSED, project.getStatus());
+    }
 
 }
