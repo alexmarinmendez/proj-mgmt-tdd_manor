@@ -16,6 +16,9 @@ public class Project {
             throw new IllegalArgumentException("El código del proyecto es obligatorio");
         }
         this.code = code;
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("El nombre del proyecto es obligatorio");
+        }
         this.name = name;
         this.clientName = clientName;
         this.sector = sector;

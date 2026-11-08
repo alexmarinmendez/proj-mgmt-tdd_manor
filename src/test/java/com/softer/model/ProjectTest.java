@@ -55,5 +55,33 @@ public class ProjectTest {
         });
     }
 
+    @Test
+    void shouldRejectProjectWithoutName() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Project(
+                    "PRJ-001",
+                    null,
+                    "Cliente ABC",
+                    IndustrySector.RETAIL,
+                    new BigDecimal("150000.00"),
+                    ProjectStatus.PROPOSED
+            );
+        });
+    }
+
+    @Test
+    void shouldRejectProjectWithBlankName() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Project(
+                    "PRJ-001",
+                    "",
+                    "Cliente ABC",
+                    IndustrySector.RETAIL,
+                    new BigDecimal("150000.00"),
+                    ProjectStatus.PROPOSED
+            );
+        });
+    }
+
 
 }
